@@ -35,6 +35,10 @@ public class Employee {
         return firstName;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getMiddleName() {
         return middleName;
     }

@@ -50,7 +50,7 @@ public class Main {
         int percent = 10;
         ServiceEmployee.findIndexSalaryInDept(employees, deptNumber, percent);
         printSeparator();
-        deptNumber = 2;
+        deptNumber = 1;
         ServiceEmployee.findAllEmploeeInDept(employees, deptNumber);
 
 

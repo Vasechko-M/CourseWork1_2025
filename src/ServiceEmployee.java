@@ -140,7 +140,7 @@ public class ServiceEmployee {
     public static void findAllEmploeeInDept(Employee[] employees, int deptNumber) {
         for (Employee e : employees) {
             if (e != null && e.getDepartmentNumber() == deptNumber) {
-                System.out.println(e.getFirstName() + " " + e.getMiddleName() + " " + e.getLastName() +
+                System.out.println(e.getId() + " " + e.getFirstName() + " " + e.getMiddleName() + " " + e.getLastName() +
                         ", ЗП = " + e.getSalary());
             }
         }
