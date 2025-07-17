@@ -1,5 +1,26 @@
-public class ServiceEmployee {
-    public static void printAllEmployees(Employee[] employees) {
+public class EmployeeBook {
+    private Employee[] employees;
+    public EmployeeBook(){
+        this.employees = new Employee[10];
+        initializeEmployees();
+    }
+    private void initializeEmployees(){
+        employees [0] = new Employee("Иванов", "Иван", "Иванович", 25180, 4);
+
+        employees [1]  = new Employee("Сидоров", "Павел", "Петрович", 70350, 1);
+
+        employees [2] = new Employee("Плашкин", "Андрей", "Леонидович", 48320, 3);
+        employees [3] = new Employee("Никитин", "Павел", "Леонидович", 47920, 1);
+        employees [4] = new Employee("Сухина", "Светлана", "Леонидовна", 125020, 3);
+        employees [5] = new Employee("Степкина", "Анжела", "Павловна", 108320, 2);
+        employees [6] = new Employee("Добрышев", "Андрей", "Георгиевич", 43751, 2);
+        employees [7] = new Employee("Дроздов", "Сергей", "Анатольевич", 48805, 1);
+        employees [8] = new Employee("Зырянова", "Наталья", "Аркадьевна", 56378, 5);
+        //employees [9] = new Employee("Плашкин", "Сергей", "Леонидович", 50240, 4);
+        }
+
+
+    public void printAllEmployees() {
         for (Employee e : employees) {
             if (e != null) {
                 System.out.println(e);
@@ -7,7 +28,7 @@ public class ServiceEmployee {
         }
     }
 
-    public static double printSumSalaryEmployees(Employee[] employees) {
+    public double printSumSalaryEmployees() {
         if (employees == null || employees.length == 0) {
             return 0.0;
         }
@@ -21,7 +42,7 @@ public class ServiceEmployee {
 
     }
 
-    public static Employee printMinSalaryEmployees(Employee[] employees) {
+    public Employee printMinSalaryEmployees() {
         if (employees == null || employees.length == 0) {
             return null;
         }
@@ -37,7 +58,7 @@ public class ServiceEmployee {
         return minSalaryEmployee;
     }
 
-    public static Employee printMaxSalaryEmployees(Employee[] employees) {
+    public Employee printMaxSalaryEmployees() {
         if (employees == null || employees.length == 0) {
             return null;
         }
@@ -53,7 +74,7 @@ public class ServiceEmployee {
         return maxSalaryEmployee;
     }
 
-    public static double printAverageSalaryEmployees(Employee[] employees) {
+    public double printAverageSalaryEmployees() {
         if (employees == null || employees.length == 0) {
             return 0.0;
         }
@@ -68,7 +89,7 @@ public class ServiceEmployee {
         return count > 0 ? totalSalary / count : 0.0; //считает только заполненные элементы массива
     }
 
-    public static void indexSalaryEmployees(Employee[] employees) { //индексирование в течении года
+    public void indexSalaryEmployees() { //индексирование в течении года
         for (Employee e : employees) {
             if (e != null) {
                 System.out.println(e);
@@ -82,7 +103,7 @@ public class ServiceEmployee {
         }
     }
 
-    public static Employee findMinSalaryInDept(Employee[] employees, int departmentNumber) {
+    public Employee findMinSalaryInDept(int departmentNumber) {
         Employee minEmployee = null;
         for (Employee e : employees) {
             if (e != null && e.getDepartmentNumber() == departmentNumber) {
@@ -94,7 +115,7 @@ public class ServiceEmployee {
         return minEmployee;
     }
 
-    public static Employee findMaxSalaryInDept(Employee[] employees, int departmentNumber) {
+    public Employee findMaxSalaryInDept(int departmentNumber) {
         Employee maxEmployee = null;
         for (Employee e : employees) {
             if (e != null && e.getDepartmentNumber() == departmentNumber) {
@@ -106,7 +127,7 @@ public class ServiceEmployee {
         return maxEmployee;
     }
 
-    public static double findSumSalaryInDept(Employee[] employees, int departmentNumber) {
+    public double findSumSalaryInDept(int departmentNumber) {
         double sumSalary = 0.0;
         for (Employee e : employees) {
             if (e != null && e.getDepartmentNumber() == departmentNumber) {
@@ -115,7 +136,7 @@ public class ServiceEmployee {
         }
         return sumSalary;
     }
-    public static double findAverageSalaryInDept(Employee[] employees, int departmentNumber) {
+    public double findAverageSalaryInDept(int departmentNumber) {
         double sumSalary = 0.0;
         int count = 0;
         for (Employee e : employees) {
@@ -126,7 +147,7 @@ public class ServiceEmployee {
         }
         return count > 0 ? sumSalary / count : 0.0;
     }
-    public static void findIndexSalaryInDept(Employee[] employees, int deptNumber, double percent) {
+    public void findIndexSalaryInDept(int deptNumber, double percent) {
         for (Employee e : employees) {
             if (e != null && e.getDepartmentNumber() == deptNumber) {
                 double oldSalary = e.getSalary();
@@ -137,15 +158,17 @@ public class ServiceEmployee {
         }
     }
 
-    public static void findAllEmploeeInDept(Employee[] employees, int deptNumber) {
+    public void findAllEmploeeInDept(int deptNumber) {
+        System.out.println("Сотрудники отдела " + deptNumber + ": ");
         for (Employee e : employees) {
             if (e != null && e.getDepartmentNumber() == deptNumber) {
-                System.out.println(e.getId() + " " + e.getFirstName() + " " + e.getMiddleName() + " " + e.getLastName() +
+                System.out.println(e.getId() + " " + e.getFirstName()
+                        + " " + e.getMiddleName() + " " + e.getLastName() +
                         ", ЗП = " + e.getSalary());
             }
         }
     }
-    public static void findALowerSalary(Employee[]employees, double salaryRate) {
+    public void findALowerSalary(double salaryRate) {
         for (Employee e : employees) {
             if (e != null && e.getSalary() < salaryRate) {
                 System.out.println("У сотрудника " + e.getId() + " " + e.getFirstName() + " "
@@ -154,7 +177,7 @@ public class ServiceEmployee {
             }
         }
     }
-    public static void findABiggerSalary(Employee[]employees, double salaryRate) {
+    public void findABiggerSalary(double salaryRate) {
         for (Employee e : employees) {
             if (e != null && e.getSalary() >= salaryRate) {
                 System.out.println("У сотрудника " + e.getId() + " " + e.getFirstName() + " "
