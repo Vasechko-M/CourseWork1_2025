@@ -145,4 +145,22 @@ public class ServiceEmployee {
             }
         }
     }
+    public static void findALowerSalary(Employee[]employees, double salaryRate) {
+        for (Employee e : employees) {
+            if (e != null && e.getSalary() < salaryRate) {
+                System.out.println("У сотрудника " + e.getId() + " " + e.getFirstName() + " "
+                        + e.getMiddleName() + " " + e.getLastName() + " " + e.getSalary()
+                        + " ЗП меньше минимальной ставки в " + salaryRate);
+            }
+        }
+    }
+    public static void findABiggerSalary(Employee[]employees, double salaryRate) {
+        for (Employee e : employees) {
+            if (e != null && e.getSalary() >= salaryRate) {
+                System.out.println("У сотрудника " + e.getId() + " " + e.getFirstName() + " "
+                        + e.getMiddleName() + " " + e.getLastName() + " " + e.getSalary()
+                        + " ЗП больше минимальной ставки в " + salaryRate);
+            }
+        }
+    }
 }

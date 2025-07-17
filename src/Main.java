@@ -52,6 +52,11 @@ public class Main {
         printSeparator();
         deptNumber = 1;
         ServiceEmployee.findAllEmploeeInDept(employees, deptNumber);
+        printSeparator();
+        double salaryRate = 50000;
+        ServiceEmployee.findALowerSalary(employees, salaryRate);
+        printSeparator();
+        ServiceEmployee.findABiggerSalary(employees, salaryRate);
 
 
 
