@@ -1,23 +1,25 @@
 public class EmployeeBook {
     private Employee[] employees;
-    public EmployeeBook(){
+
+    public EmployeeBook() {
         this.employees = new Employee[10];
         initializeEmployees();
     }
-    private void initializeEmployees(){
-        employees [0] = new Employee("Иванов", "Иван", "Иванович", 25180, 4);
 
-        employees [1]  = new Employee("Сидоров", "Павел", "Петрович", 70350, 1);
+    private void initializeEmployees() {
+        employees[0] = new Employee("Иванов", "Иван", "Иванович", 25180, 4);
 
-        employees [2] = new Employee("Плашкин", "Андрей", "Леонидович", 48320, 3);
-        employees [3] = new Employee("Никитин", "Павел", "Леонидович", 47920, 1);
-        employees [4] = new Employee("Сухина", "Светлана", "Леонидовна", 125020, 3);
-        employees [5] = new Employee("Степкина", "Анжела", "Павловна", 108320, 2);
-        employees [6] = new Employee("Добрышев", "Андрей", "Георгиевич", 43751, 2);
-        employees [7] = new Employee("Дроздов", "Сергей", "Анатольевич", 48805, 1);
-        employees [8] = new Employee("Зырянова", "Наталья", "Аркадьевна", 56378, 5);
+        employees[1] = new Employee("Сидоров", "Павел", "Петрович", 70350, 1);
+
+        employees[2] = new Employee("Плашкин", "Андрей", "Леонидович", 48320, 3);
+        employees[3] = new Employee("Никитин", "Павел", "Леонидович", 47920, 1);
+        employees[4] = new Employee("Сухина", "Светлана", "Леонидовна", 125020, 3);
+        employees[5] = new Employee("Степкина", "Анжела", "Павловна", 108320, 2);
+        employees[6] = new Employee("Добрышев", "Андрей", "Георгиевич", 43751, 2);
+        employees[7] = new Employee("Дроздов", "Сергей", "Анатольевич", 48805, 1);
+        employees[8] = new Employee("Зырянова", "Наталья", "Аркадьевна", 56378, 5);
         //employees [9] = new Employee("Плашкин", "Сергей", "Леонидович", 50240, 4);
-        }
+    }
 
 
     public void printAllEmployees() {
@@ -28,10 +30,7 @@ public class EmployeeBook {
         }
     }
 
-    public double printSumSalaryEmployees() {
-        if (employees == null || employees.length == 0) {
-            return 0.0;
-        }
+    public double findSumSalaryEmployees() {
         double totalSalary = 0;
         for (Employee e : employees) {
             if (e != null) {
@@ -42,12 +41,9 @@ public class EmployeeBook {
 
     }
 
-    public Employee printMinSalaryEmployees() {
-        if (employees == null || employees.length == 0) {
-            return null;
-        }
-        Employee minSalaryEmployee = employees[0];
-        double minSalary = employees[0].getSalary();
+    public Employee findMinSalaryEmployees() {
+        Employee minSalaryEmployee = null;
+        double minSalary = Double.MAX_VALUE;
 
         for (Employee e : employees) {
             if (e != null && e.getSalary() < minSalary) {
@@ -58,12 +54,9 @@ public class EmployeeBook {
         return minSalaryEmployee;
     }
 
-    public Employee printMaxSalaryEmployees() {
-        if (employees == null || employees.length == 0) {
-            return null;
-        }
-        Employee maxSalaryEmployee = employees[0];
-        double maxSalary = employees[0].getSalary();
+    public Employee findMaxSalaryEmployees() {
+        Employee maxSalaryEmployee = null;
+        double maxSalary = Double.MIN_VALUE;
 
         for (Employee e : employees) {
             if (e != null && e.getSalary() > maxSalary) {
@@ -74,10 +67,7 @@ public class EmployeeBook {
         return maxSalaryEmployee;
     }
 
-    public double printAverageSalaryEmployees() {
-        if (employees == null || employees.length == 0) {
-            return 0.0;
-        }
+    public double findAverageSalaryEmployees() {
         double totalSalary = 0;
         int count = 0;
         for (Employee e : employees) {
@@ -89,16 +79,13 @@ public class EmployeeBook {
         return count > 0 ? totalSalary / count : 0.0; //считает только заполненные элементы массива
     }
 
-    public void indexSalaryEmployees() { //индексирование в течении года
+    public void indexSalaryEmployees(double percent) { //индексирование в течении года
         for (Employee e : employees) {
             if (e != null) {
-                System.out.println(e);
-                double total = e.getSalary();
-                for (int i = 1; i < 12; i++) {
-                    total = total + total * 0.01;
-                    System.out.printf("Год работы в компании - %d. Итого с учетом индексации %.2f%n", i, total);
-                }
-
+                double oldSalary = e.getSalary();
+                double newSalary = oldSalary + (oldSalary * percent / 100);
+                e.setSalary(newSalary);
+                System.out.println("ЗП у сотрудника " + e + " после индексации: " + newSalary);
             }
         }
     }
@@ -106,10 +93,9 @@ public class EmployeeBook {
     public Employee findMinSalaryInDept(int departmentNumber) {
         Employee minEmployee = null;
         for (Employee e : employees) {
-            if (e != null && e.getDepartmentNumber() == departmentNumber) {
-                if (minEmployee == null || e.getSalary() < minEmployee.getSalary()) {
-                    minEmployee = e;
-                }
+            if (e != null && e.getDepartmentNumber() == departmentNumber
+                    && (minEmployee == null || e.getSalary() < minEmployee.getSalary())) {
+                minEmployee = e;
             }
         }
         return minEmployee;
@@ -118,10 +104,9 @@ public class EmployeeBook {
     public Employee findMaxSalaryInDept(int departmentNumber) {
         Employee maxEmployee = null;
         for (Employee e : employees) {
-            if (e != null && e.getDepartmentNumber() == departmentNumber) {
-                if (maxEmployee == null || e.getSalary() > maxEmployee.getSalary()) {
-                    maxEmployee = e;
-                }
+            if (e != null && e.getDepartmentNumber() == departmentNumber
+                    && (maxEmployee == null || e.getSalary() > maxEmployee.getSalary())) {
+                maxEmployee = e;
             }
         }
         return maxEmployee;
@@ -136,17 +121,19 @@ public class EmployeeBook {
         }
         return sumSalary;
     }
+
     public double findAverageSalaryInDept(int departmentNumber) {
         double sumSalary = 0.0;
         int count = 0;
         for (Employee e : employees) {
             if (e != null && e.getDepartmentNumber() == departmentNumber) {
                 sumSalary += e.getSalary();
-                count ++;
+                count++;
             }
         }
         return count > 0 ? sumSalary / count : 0.0;
     }
+
     public void findIndexSalaryInDept(int deptNumber, double percent) {
         for (Employee e : employees) {
             if (e != null && e.getDepartmentNumber() == deptNumber) {
@@ -168,6 +155,7 @@ public class EmployeeBook {
             }
         }
     }
+
     public void findALowerSalary(double salaryRate) {
         for (Employee e : employees) {
             if (e != null && e.getSalary() < salaryRate) {
@@ -177,6 +165,7 @@ public class EmployeeBook {
             }
         }
     }
+
     public void findABiggerSalary(double salaryRate) {
         for (Employee e : employees) {
             if (e != null && e.getSalary() >= salaryRate) {
@@ -185,5 +174,9 @@ public class EmployeeBook {
                         + " ЗП больше минимальной ставки в " + salaryRate);
             }
         }
+    }
+
+    public void printSeparator() {
+        System.out.println("===********===");
     }
 }

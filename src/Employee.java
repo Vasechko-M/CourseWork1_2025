@@ -3,8 +3,8 @@ import java.util.Objects;
 public class Employee {
     private static int counter = 1;
     private final int id;
-    private  String firstName;
-    private  String middleName;
+    private String firstName;
+    private String middleName;
     private String lastName;
     private double salary;
     private int departmentNumber;
@@ -19,9 +19,6 @@ public class Employee {
         this.id = counter++;
     }
 
-    public static int getCounter() {
-        return counter;
-    }
 
     public double getSalary() {
         return salary;

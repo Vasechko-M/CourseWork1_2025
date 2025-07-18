@@ -4,51 +4,49 @@ public class Main {
         EmployeeBook employeeBook = new EmployeeBook();
 
         employeeBook.printAllEmployees();
-        printSeparator();
-        double sum = employeeBook.printSumSalaryEmployees();
+        employeeBook.printSeparator();
+        double sum = employeeBook.findSumSalaryEmployees();
         System.out.println("Общая сумма ЗП: " + sum);
-        printSeparator();
-        Employee min = employeeBook.printMinSalaryEmployees();
+        employeeBook.printSeparator();
+        Employee min = employeeBook.findMinSalaryEmployees();
         System.out.println("Минимальная ЗП " + min);
-        printSeparator();
-        Employee max = employeeBook.printMaxSalaryEmployees();
+        employeeBook.printSeparator();
+        Employee max = employeeBook.findMaxSalaryEmployees();
         System.out.println("Максимальная ЗП " + max);
-        printSeparator();
-        double average = employeeBook.printAverageSalaryEmployees();
+        employeeBook.printSeparator();
+        double average = employeeBook.findAverageSalaryEmployees();
         System.out.printf("Средняя сумма ЗП: %.2f%n", average);
-        printSeparator();
-        employeeBook.indexSalaryEmployees();
-        printSeparator();
-        Employee minInDept1 = employeeBook.findMinSalaryInDept( 1);
+        employeeBook.printSeparator();
+        int percent = 10;
+        employeeBook.indexSalaryEmployees(percent);
+        employeeBook.printSeparator();
+        Employee minInDept1 = employeeBook.findMinSalaryInDept(1);
         System.out.println("Минимальная ЗП в отделе 1: " + minInDept1);
-        printSeparator();
-        Employee maxInDept3 = employeeBook.findMaxSalaryInDept( 3);
+        employeeBook.printSeparator();
+        Employee maxInDept3 = employeeBook.findMaxSalaryInDept(3);
         System.out.println("Максимальная ЗП в отделе 3: " + maxInDept3);
-        printSeparator();
+        employeeBook.printSeparator();
         int deptNumber = 2;
         double samDeptSalaries = employeeBook.findSumSalaryInDept(deptNumber);
         System.out.println("Общие затраты на ЗП в отделе " + deptNumber + ": " + samDeptSalaries);
-        printSeparator();
+        employeeBook.printSeparator();
         deptNumber = 3;
-        double averageDeptSalaries = employeeBook.findAverageSalaryInDept( deptNumber);
+        double averageDeptSalaries = employeeBook.findAverageSalaryInDept(deptNumber);
         System.out.println("Средние затраты на ЗП в отделе " + deptNumber + ": " + averageDeptSalaries);
-        printSeparator();
+        employeeBook.printSeparator();
         deptNumber = 1;
-        int percent = 10;
+        percent = 10;
         employeeBook.findIndexSalaryInDept(deptNumber, percent);
-        printSeparator();
+        employeeBook.printSeparator();
         deptNumber = 1;
         employeeBook.findAllEmploeeInDept(deptNumber);
-        printSeparator();
+        employeeBook.printSeparator();
         double salaryRate = 50000;
         employeeBook.findALowerSalary(salaryRate);
-        printSeparator();
+        employeeBook.printSeparator();
         employeeBook.findABiggerSalary(salaryRate);
 
 
+    }
 
-    }
-    public static void printSeparator() {
-        System.out.println("===********===");
-    }
 }
