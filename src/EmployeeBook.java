@@ -76,10 +76,10 @@ public class EmployeeBook {
                 count++;
             }
         }
-        return count > 0 ? totalSalary / count : 0.0; //считает только заполненные элементы массива
+        return count > 0 ? totalSalary / count : 0.0;
     }
 
-    public void indexSalaryEmployees(double percent) { //индексирование в течении года
+    public void indexSalaryEmployees(double percent) {
         for (Employee e : employees) {
             if (e != null) {
                 double oldSalary = e.getSalary();
@@ -175,8 +175,32 @@ public class EmployeeBook {
             }
         }
     }
-
-    public void printSeparator() {
-        System.out.println("===********===");
+    public boolean addEmployee(Employee employee) {
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] == null) {
+                employees[i] = employee;
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean removeEmployeeById(int employeeId) {
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null && employees[i].getId() == employeeId) {
+                employees[i] = null;
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean findEmployeeById(int employeeId) {
+        for (Employee e : employees) {
+            if (e != null && e.getId() == employeeId) {
+                System.out.println("Сотрудник с id = " + e);
+                return true;
+            }
+        }
+        System.out.println("Сотрудник с id = " + employeeId + " не найден");
+        return false;
     }
 }
