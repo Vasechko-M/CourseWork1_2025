@@ -56,13 +56,7 @@ public class Main {
         employeeBook.printAllEmployees();
         printSeparator();
         int id = 10;
-        boolean removed = employeeBook.removeEmployeeById(id);
-        if (removed) {
-            System.out.println("Сотрудник в ID = " + id + " успешно удален");
-        } else {
-            System.out.println("Сотрудник в ID = " + id + " не найден");
-        }
-        employeeBook.printAllEmployees();
+        employeeBook.removeEmployeeById(id);
         printSeparator();
         id = 2;
         employeeBook.findEmployeeById(id);

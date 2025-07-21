@@ -188,15 +188,16 @@ public class EmployeeBook {
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] != null && employees[i].getId() == employeeId) {
                 employees[i] = null;
+                System.out.println("Сотрудник c ID = " + employeeId + " успешно удален");
                 return true;
             }
         }
+        System.out.println("Сотрудник c ID = " + employeeId + " не найден");
         return false;
     }
     public boolean findEmployeeById(int employeeId) {
         for (Employee e : employees) {
             if (e != null && e.getId() == employeeId) {
-                System.out.println("Сотрудник с id = " + e);
                 return true;
             }
         }
