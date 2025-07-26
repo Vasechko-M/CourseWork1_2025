@@ -184,11 +184,12 @@ public class EmployeeBook {
         }
         return false;
     }
-    public Employee[] removeEmployeeById(int employeeId) {
+    public Employee removeEmployeeById(int employeeId) {
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] != null && employees[i].getId() == employeeId) {
+                Employee removedEmployee = employees[i];
                 employees[i] = null;
-                return employees;
+                return removedEmployee;
             }
         }
         return null;
