@@ -194,13 +194,14 @@ public class EmployeeBook {
         }
         return null;
     }
-    public boolean findEmployeeById(int employeeId) {
-        for (Employee e : employees) {
-            if (e != null && e.getId() == employeeId) {
-                return true;
+    public Employee findEmployeeById(int employeeId) {
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null && employees[i].getId() == employeeId) {
+                Employee findEmployeeBy = employees[i];
+                return findEmployeeBy;
             }
         }
         System.out.println("Сотрудник с id = " + employeeId + " не найден");
-        return false;
+        return null;
     }
 }
